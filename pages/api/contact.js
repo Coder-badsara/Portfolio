@@ -17,8 +17,6 @@ export default function handler(req, res) {
     // 3. Call external APIs
     // etc.
 
-    console.log('Received message:', { name, email, message });
-
     // For now, just return success
     return res.status(200).json({ 
       success: true,
