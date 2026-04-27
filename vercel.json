@@ -10,10 +10,7 @@
     }
   },
   "env": {
-    "NEXT_PUBLIC_SITE_URL": {
-      "description": "Your portfolio site URL",
-      "default": "https://umeshbadsara.vercel.app"
-    }
+    "NEXT_PUBLIC_SITE_URL": "https://umeshbadsara.vercel.app"
   },
   "headers": [
     {
