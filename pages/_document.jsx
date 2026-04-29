@@ -5,6 +5,7 @@ export default function Document() {
     <Html lang="en">
       <Head>
         <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content="Umesh Badsara - Backend Developer | Django Specialist | Rest APIs | MySQL" />
         <meta name="keywords" content="Backend Developer, Django, Python, REST APIs, MySQL, Portfolio" />
         <meta name="author" content="Umesh Badsara" />

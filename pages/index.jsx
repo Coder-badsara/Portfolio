@@ -18,7 +18,7 @@ const COLORS = {
 };
 
 const style = {
-  bg: { background: COLORS.bg, color: COLORS.textPrimary, fontFamily: "'DM Sans', sans-serif", minHeight: "100vh" },
+  bg: { background: COLORS.bg, color: COLORS.textPrimary, fontFamily: "'DM Sans', sans-serif", minHeight: "100vh", overflowX: "hidden" },
   card: { background: COLORS.bgCard, border: `1px solid ${COLORS.border}`, borderRadius: 12 },
   cardHover: { background: COLORS.bgCardHover, border: `1px solid ${COLORS.borderAccent}`, borderRadius: 12 },
   accent: { color: COLORS.accent },
@@ -97,7 +97,7 @@ function ProjectCard({ title, description, tech, num, repoUrl }) {
         overflow: "hidden",
       }}
     >
-      <div style={{ position: "absolute", top: 16, right: 16, ...style.mono, fontSize: 48, fontWeight: 700, color: "rgba(0,232,122,0.04)", lineHeight: 1 }}>
+      <div style={{ position: "absolute", bottom: 16, right: 18, ...style.mono, fontSize: 48, fontWeight: 700, color: "rgba(0,232,122,0.04)", lineHeight: 1, pointerEvents: "none" }}>
         {String(num).padStart(2, "0")}
       </div>
       <div style={{ display: "flex", alignItems: "flex-start", gap: 14, marginBottom: 14 }}>
@@ -351,7 +351,7 @@ export default function Portfolio() {
           <p style={{ fontSize: "clamp(15px, 2vw, 18px)", color: COLORS.textSecondary, maxWidth: 560, lineHeight: 1.75, marginBottom: 36 }}>
             I build <span style={{ color: COLORS.textPrimary, fontWeight: 500 }}>scalable backend systems</span>, REST APIs, and <span style={{ color: COLORS.textPrimary, fontWeight: 500 }}>database-driven web applications</span> using Django and MySQL.
           </p>
-          <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+          <div className="hero-actions" style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
             <button
               onClick={() => scrollTo("Projects")}
               style={{ background: COLORS.accent, color: "#070b09", border: "none", borderRadius: 9, padding: "12px 26px", fontSize: 15, fontWeight: 700, cursor: "pointer", display: "flex", alignItems: "center", gap: 7, transition: "all 0.2s" }}
@@ -373,7 +373,7 @@ export default function Portfolio() {
           </div>
 
           {/* Stat cards */}
-          <div style={{ display: "flex", gap: 16, marginTop: 56, flexWrap: "wrap" }}>
+          <div className="hero-stats" style={{ display: "flex", gap: 16, marginTop: 56, flexWrap: "wrap" }}>
             {[["3+", "Backend Projects"], ["Django", "Primary Framework"], ["MySQL", "Database Stack"], ["REST APIs", "Core Skill"]].map(([num, label]) => (
               <div key={label} style={{ ...style.card, padding: "14px 20px", textAlign: "center", minWidth: 110 }}>
                 <div style={{ ...style.mono, fontSize: 18, fontWeight: 700, color: COLORS.accent }}>{num}</div>
@@ -389,7 +389,7 @@ export default function Portfolio() {
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <SectionLabel>about_me</SectionLabel>
           <SectionTitle>Who I Am</SectionTitle>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 40, marginTop: 36 }}>
+          <div className="about-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 40, marginTop: 36 }}>
             <div>
               <p style={{ color: COLORS.textSecondary, fontSize: 15, lineHeight: 1.85, marginBottom: 16 }}>
                 I'm a <span style={{ color: COLORS.textPrimary, fontWeight: 600 }}>Computer Science student</span> and aspiring backend developer passionate about building systems that are structured, secure, and scalable. I specialize in <span style={{ color: COLORS.accent }}>Django</span>, REST APIs, authentication systems, and relational databases.
@@ -466,7 +466,7 @@ export default function Portfolio() {
           <SectionLabel>backend_projects</SectionLabel>
           <SectionTitle>Projects</SectionTitle>
           <p style={{ color: COLORS.textSecondary, fontSize: 15, marginBottom: 36, marginTop: 4 }}>Backend systems I've built using Django, REST APIs, and MySQL.</p>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: 20 }}>
+          <div className="projects-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: 20 }}>
             {projects.map((p) => <ProjectCard key={p.title} {...p} />)}
           </div>
         </div>
@@ -522,7 +522,7 @@ export default function Portfolio() {
           <SectionLabel>get_in_touch</SectionLabel>
           <SectionTitle>Contact Me</SectionTitle>
           <p style={{ color: COLORS.textSecondary, fontSize: 15, marginBottom: 40, marginTop: 4 }}>Let's connect — I'm actively looking for backend developer opportunities.</p>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 40 }}>
+          <div className="contact-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 40 }}>
             <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
               {[
                 { icon: Phone, label: "Phone", val: "+91 7733957460", href: "tel:+917733957460" },
@@ -603,7 +603,7 @@ export default function Portfolio() {
       </section>
 
       {/* FOOTER */}
-      <footer style={{ padding: "28px 5%", borderTop: `1px solid ${COLORS.border}`, display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12, position: "relative", zIndex: 1 }}>
+      <footer className="portfolio-footer" style={{ padding: "28px 5%", borderTop: `1px solid ${COLORS.border}`, display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12, position: "relative", zIndex: 1 }}>
         <span style={{ ...style.mono, color: COLORS.textMuted, fontSize: 13 }}>Built by <span style={{ color: COLORS.accent }}>Umesh Badsara</span> — Backend Developer</span>
         <span style={{ color: COLORS.textMuted, fontSize: 13 }}>© 2025 Umesh Badsara. All rights reserved.</span>
         <div style={{ display: "flex", gap: 10 }}>
@@ -616,18 +616,6 @@ export default function Portfolio() {
         </div>
       </footer>
 
-      <style>{`
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: #070b09; } ::-webkit-scrollbar-thumb { background: #1a2b20; border-radius: 3px; }
-        section h1, section h2, section h3, section p { margin: 0; }
-        @media (max-width: 768px) {
-          .nav-desktop { display: none; }
-          section { padding: 40px 5% !important; }
-        }
-      `}</style>
     </div>
   );
 }
