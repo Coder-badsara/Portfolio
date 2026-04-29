@@ -313,7 +313,7 @@ export default function Portfolio() {
         transition: "all 0.3s",
         padding: "0 5%",
       }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", height: 64 }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", height: 64, position: "relative" }}>
           <span style={{ ...style.mono, color: COLORS.accent, fontWeight: 700, fontSize: 18 }}>UB<span style={{ color: COLORS.textMuted }}>.dev</span></span>
           <div style={{ display: "flex", gap: 4 }} className="nav-desktop">
             {navLinks.map((l) => (
@@ -326,15 +326,46 @@ export default function Portfolio() {
           </div>
           <button
             onClick={() => window.open("mailto:coderbadsara@gmail.com")}
+            className="nav-hire-desktop"
             style={{ ...style.mono, background: COLORS.accentGlow, border: `1px solid ${COLORS.accentBorder}`, color: COLORS.accent, borderRadius: 8, padding: "8px 18px", fontSize: 13, cursor: "pointer", fontWeight: 600, transition: "all 0.2s" }}
           >Hire Me</button>
+          <button
+            onClick={() => setNavOpen((prev) => !prev)}
+            className={navOpen ? "nav-menu-button nav-menu-button-open" : "nav-menu-button"}
+            aria-label="Toggle navigation menu"
+            aria-expanded={navOpen}
+            style={{ display: "none", alignItems: "center", justifyContent: "center", width: 42, height: 42, borderRadius: 10, background: "rgba(255,255,255,0.03)", border: `1px solid ${COLORS.border}`, color: COLORS.textPrimary, cursor: "pointer" }}
+          >
+            <span className={navOpen ? "nav-menu-icon nav-menu-icon-open" : "nav-menu-icon"}>
+              {navOpen ? <X size={18} /> : <Menu size={18} />}
+            </span>
+          </button>
+          {navOpen && (
+            <div className="nav-mobile-panel" style={{ position: "absolute", top: 64, right: 0, width: 240, padding: 12, borderRadius: 14, background: "rgba(7,11,9,0.98)", border: `1px solid ${COLORS.borderAccent}`, boxShadow: "0 18px 50px rgba(0,0,0,0.35)", display: "flex", flexDirection: "column", gap: 8 }}>
+              {navLinks.map((l) => (
+                <button
+                  key={l}
+                  onClick={() => scrollTo(l)}
+                  style={{ background: "rgba(255,255,255,0.03)", border: `1px solid ${COLORS.border}`, color: COLORS.textPrimary, padding: "10px 12px", borderRadius: 10, textAlign: "left", fontSize: 14, cursor: "pointer" }}
+                >
+                  {l}
+                </button>
+              ))}
+              <button
+                onClick={() => window.open("mailto:coderbadsara@gmail.com")}
+                style={{ ...style.mono, marginTop: 4, background: COLORS.accentGlow, border: `1px solid ${COLORS.accentBorder}`, color: COLORS.accent, borderRadius: 10, padding: "10px 12px", fontSize: 13, cursor: "pointer", fontWeight: 600, textAlign: "left" }}
+              >
+                Hire Me
+              </button>
+            </div>
+          )}
         </div>
       </nav>
 
       {/* HERO */}
-      <section id="home" style={{ minHeight: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", padding: "100px 5% 60px", position: "relative", zIndex: 1 }}>
+      <section id="home" className="hero-section" style={{ minHeight: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", padding: "100px 5% 60px", position: "relative", zIndex: 1 }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", width: "100%" }}>
-          <div style={{ marginBottom: 20 }}>
+          <div className="hero-badge-wrap" style={{ marginBottom: 20 }}>
             <span style={{ ...style.accentBg, borderRadius: 20, padding: "5px 14px", fontSize: 13, fontWeight: 600, display: "inline-flex", alignItems: "center", gap: 7 }}>
               <span style={{ width: 7, height: 7, borderRadius: "50%", background: COLORS.accent, display: "inline-block", animation: "pulse 2s infinite" }} />
               Open to Internship & Fresher Backend Roles
