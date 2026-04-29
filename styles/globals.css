@@ -48,7 +48,7 @@ section p {
   margin: 0;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
   .nav-desktop {
     display: none;
   }
@@ -92,7 +92,6 @@ section p {
 }
 
 @media (max-width: 768px) {
-
   .about-grid,
   .contact-grid,
   .projects-grid {
