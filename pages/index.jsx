@@ -294,6 +294,26 @@ export default function Portfolio() {
         "Architected a relational database managing high-volume transactional data, including many-to-many relationships between Orders and Products.",
       ],
     },
+    {
+      num: 4, title: "Task Manager",
+      repoUrl: "https://github.com/Coder-badsara/taskmanager",
+      tech: ["Django", "React", "PostgreSQL", "Docker", "JWT"],
+      description: [
+        "Built a production-ready full-stack task management system with a Django REST Framework backend and React + Vite frontend, connected via JWT authentication.",
+        "Implemented role-based access control separating Admin and User permissions, with full CRUD on tasks and a dedicated admin panel for user management.",
+        "Containerized the entire stack using Docker and docker-compose, with Gunicorn + Nginx for production serving and Swagger / ReDoc for live API documentation.",
+      ],
+    },
+    {
+      num: 5, title: "AEO Diagnostic Tool",
+      repoUrl: "https://github.com/Coder-badsara/AEO_Tool",
+      tech: ["Next.js", "TypeScript", "OpenRouter", "Tailwind"],
+      description: [
+        "Developed a Next.js application that queries Nvidia Nemotron, Gemma 3n 2B, and GPT-OSS-120B in parallel to analyze how AI answer engines mention a given product.",
+        "Built a scoring engine that calculates a visibility score, compares competitor mentions, and generates actionable AEO recommendations rendered in a dynamic report card UI.",
+        "Deployed on Vercel with a modular API route architecture; each AI engine has its own route, orchestrated by a single /api/diagnose endpoint for clean separation of concerns.",
+      ],
+    },
   ];
 
   const inputStyle = { width: "100%", background: "rgba(255,255,255,0.03)", border: `1px solid ${COLORS.border}`, borderRadius: 8, padding: "12px 14px", color: COLORS.textPrimary, fontSize: 14, outline: "none", boxSizing: "border-box", fontFamily: "inherit" };
@@ -496,9 +516,24 @@ export default function Portfolio() {
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <SectionLabel>backend_projects</SectionLabel>
           <SectionTitle>Projects</SectionTitle>
-          <p style={{ color: COLORS.textSecondary, fontSize: 15, marginBottom: 36, marginTop: 4 }}>Backend systems I've built using Django, REST APIs, and MySQL.</p>
-          <div className="projects-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: 20 }}>
-            {projects.map((p) => <ProjectCard key={p.title} {...p} />)}
+          
+          {/* Backend Projects */}
+          <div style={{ marginBottom: 60 }}>
+            <p style={{ color: COLORS.textSecondary, fontSize: 15, marginBottom: 36, marginTop: 4 }}>Backend systems I've built using Django, REST APIs, and MySQL.</p>
+            <div className="projects-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: 20 }}>
+              {projects.filter(p => p.num <= 3).map((p) => <ProjectCard key={p.title} {...p} />)}
+            </div>
+          </div>
+
+          {/* AI Projects */}
+          <div>
+            <SectionLabel>ai_projects</SectionLabel>
+            <div style={{ marginBottom: 36, marginTop: 16 }}>
+              <p style={{ color: COLORS.textSecondary, fontSize: 15 }}>Full-stack AI and modern web applications.</p>
+            </div>
+            <div className="projects-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: 20 }}>
+              {projects.filter(p => p.num > 3).map((p) => <ProjectCard key={p.title} {...p} />)}
+            </div>
           </div>
         </div>
       </section>
@@ -543,6 +578,88 @@ export default function Portfolio() {
               date="October 2025"
               certUrl="https://drive.google.com/file/d/1GSlULwrT0rcDR0GE4WWoAfAYAqgWk91a/view?usp=sharing"
             />
+          </div>
+        </div>
+      </section>
+
+      {/* OPEN SOURCE */}
+      <section id="opensource" style={{ padding: "80px 5%", position: "relative", zIndex: 1 }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+          <SectionLabel>open_source_contributions</SectionLabel>
+          <SectionTitle>Open Source</SectionTitle>
+          <p style={{ color: COLORS.textSecondary, fontSize: 15, marginBottom: 36, marginTop: 4 }}>
+            Hacktoberfest contributor — earned badges across multiple levels of open source participation including Supercontributor status and the 10 Badge Club.
+          </p>
+
+          {/* Badge Board Card */}
+          <div
+            style={{
+              ...style.card,
+              padding: "24px",
+              transition: "all 0.3s ease",
+              cursor: "pointer",
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.borderColor = COLORS.accentBorder;
+              e.currentTarget.style.boxShadow = `0 0 24px ${COLORS.accentGlow}`;
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.borderColor = COLORS.border;
+              e.currentTarget.style.boxShadow = "none";
+            }}
+          >
+            <a href="https://holopin.io/@badsaraumesh" target="_blank" rel="noopener noreferrer">
+              <img
+                src="https://holopin.me/badsaraumesh"
+                alt="Umesh Badsara's Holopin open source badges"
+                style={{ width: "100%", borderRadius: "8px", display: "block" }}
+              />
+            </a>
+          </div>
+
+          {/* Stat Chips */}
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "10px", marginTop: "28px" }}>
+            {["10+ Badges", "Supercontributor", "Hacktoberfest 2022", "Level 4 Unlocked", "DigitalOcean", "Appwrite", "Tree-Nation"].map((chip) => (
+              <span key={chip} style={{ background: `${COLORS.accentGlow}`, border: `1px solid ${COLORS.accentBorder}`, color: COLORS.accent, borderRadius: "6px", padding: "6px 12px", fontSize: "12px", ...style.mono }}>
+                {chip}
+              </span>
+            ))}
+          </div>
+
+          {/* View Profile Button */}
+          <div style={{ marginTop: "32px" }}>
+            <a
+              href="https://holopin.io/@badsaraumesh"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "8px",
+                background: "transparent",
+                border: `1px solid ${COLORS.border}`,
+                color: COLORS.textSecondary,
+                padding: "10px 20px",
+                borderRadius: "8px",
+                fontSize: "13px",
+                ...style.mono,
+                textDecoration: "none",
+                transition: "all 0.2s",
+                cursor: "pointer",
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.background = COLORS.accentGlow;
+                e.currentTarget.style.borderColor = COLORS.accentBorder;
+                e.currentTarget.style.color = COLORS.accent;
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.background = "transparent";
+                e.currentTarget.style.borderColor = COLORS.border;
+                e.currentTarget.style.color = COLORS.textSecondary;
+              }}
+            >
+              ↗ View Full Holopin Profile
+            </a>
           </div>
         </div>
       </section>
