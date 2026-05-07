@@ -17,7 +17,8 @@ export default function Document() {
         <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
         
         {/* Favicon */}
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" href="/favicon.png" />
+        <link rel="apple-touch-icon" href="/favicon.png" />
       </Head>
       <body>
         <Main />
