@@ -236,19 +236,24 @@ export default function Portfolio() {
       setIsSending(true);
       setSubmitStatus({ type: "", message: "" });
 
-      const response = await fetch("/api/contact", {
+      const payload = new FormData();
+      payload.append("name", formData.name);
+      payload.append("email", formData.email);
+      payload.append("message", formData.message);
+      payload.append("access_key", "51ba0757-63bb-4ac6-811f-b35f4398c2fd");
+
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: payload,
       });
 
       const data = await response.json();
 
-      if (!response.ok) {
-        throw new Error(data.error || "Failed to send message.");
+      if (!response.ok || !data.success) {
+        throw new Error(data.message || "Failed to send message.");
       }
 
-      setSubmitStatus({ type: "success", message: "Message sent successfully. I will get back to you soon." });
+      setSubmitStatus({ type: "success", message: "Awesome! Your message has been delivered." });
       setFormData({ name: "", email: "", message: "" });
     } catch (error) {
       setSubmitStatus({ type: "error", message: error.message || "Something went wrong. Please try again." });
@@ -704,6 +709,7 @@ export default function Portfolio() {
                   value={formData.name}
                   onChange={handleInputChange}
                   placeholder="Your Name"
+                  required
                   style={inputStyle}
                   onFocus={e => e.target.style.borderColor = COLORS.accentBorder}
                   onBlur={e => e.target.style.borderColor = COLORS.border}
@@ -714,6 +720,7 @@ export default function Portfolio() {
                   onChange={handleInputChange}
                   placeholder="Your Email"
                   type="email"
+                  required
                   style={inputStyle}
                   onFocus={e => e.target.style.borderColor = COLORS.accentBorder}
                   onBlur={e => e.target.style.borderColor = COLORS.border}
@@ -724,6 +731,7 @@ export default function Portfolio() {
                   onChange={handleInputChange}
                   placeholder="Your Message"
                   rows={5}
+                  required
                   style={{ ...inputStyle, resize: "vertical", fontFamily: "inherit" }}
                   onFocus={e => e.target.style.borderColor = COLORS.accentBorder}
                   onBlur={e => e.target.style.borderColor = COLORS.border}
