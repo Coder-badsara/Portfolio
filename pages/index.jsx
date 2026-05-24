@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Github, Linkedin, Mail, Phone, MapPin, ExternalLink, Download, ChevronDown, Code2, Database, Server, Terminal, Award, GraduationCap, Briefcase, Menu, X, ArrowRight } from "lucide-react";
+import { Github, Linkedin, Mail, Phone, MapPin, ExternalLink, Download, ChevronDown, Code2, Database, Server, Terminal, Award, GraduationCap, Briefcase, Menu, X, ArrowRight, Sparkles } from "lucide-react";
 
 const COLORS = {
   bg: "#070b09",
@@ -81,7 +81,7 @@ function SkillCard({ category, icon: Icon, skills }) {
   );
 }
 
-function ProjectCard({ title, description, tech, num, repoUrl }) {
+function ProjectCard({ title, description, tech, num, repoUrl, liveUrl }) {
   const [hovered, setHovered] = useState(false);
   return (
     <div
@@ -119,17 +119,32 @@ function ProjectCard({ title, description, tech, num, repoUrl }) {
         ))}
       </div>
       <div style={{ marginTop: 16, display: "flex", gap: 8 }}>
-        <button
-          onClick={() => window.open(repoUrl, "_blank", "noopener,noreferrer")}
-          style={{
-            display: "flex", alignItems: "center", gap: 5, padding: "7px 14px", borderRadius: 7, fontSize: 13, fontWeight: 500, cursor: "pointer",
-            background: "transparent", border: `1px solid ${COLORS.border}`, color: COLORS.textSecondary, transition: "all 0.2s",
-          }}
-          onMouseEnter={e => { e.currentTarget.style.borderColor = COLORS.accentBorder; e.currentTarget.style.color = COLORS.accent; }}
-          onMouseLeave={e => { e.currentTarget.style.borderColor = COLORS.border; e.currentTarget.style.color = COLORS.textSecondary; }}
-        >
-          <Github size={13} /> GitHub
-        </button>
+        {repoUrl && (
+          <button
+            onClick={() => window.open(repoUrl, "_blank", "noopener,noreferrer")}
+            style={{
+              display: "flex", alignItems: "center", gap: 5, padding: "7px 14px", borderRadius: 7, fontSize: 13, fontWeight: 500, cursor: "pointer",
+              background: "transparent", border: `1px solid ${COLORS.border}`, color: COLORS.textSecondary, transition: "all 0.2s",
+            }}
+            onMouseEnter={e => { e.currentTarget.style.borderColor = COLORS.accentBorder; e.currentTarget.style.color = COLORS.accent; }}
+            onMouseLeave={e => { e.currentTarget.style.borderColor = COLORS.border; e.currentTarget.style.color = COLORS.textSecondary; }}
+          >
+            <Github size={13} /> GitHub
+          </button>
+        )}
+        {liveUrl && (
+          <button
+            onClick={() => window.open(liveUrl, "_blank", "noopener,noreferrer")}
+            style={{
+              display: "flex", alignItems: "center", gap: 5, padding: "7px 14px", borderRadius: 7, fontSize: 13, fontWeight: 500, cursor: "pointer",
+              background: "transparent", border: `1px solid ${COLORS.border}`, color: COLORS.textSecondary, transition: "all 0.2s",
+            }}
+            onMouseEnter={e => { e.currentTarget.style.borderColor = COLORS.accentBorder; e.currentTarget.style.color = COLORS.accent; }}
+            onMouseLeave={e => { e.currentTarget.style.borderColor = COLORS.border; e.currentTarget.style.color = COLORS.textSecondary; }}
+          >
+            <ExternalLink size={13} /> Live Demo
+          </button>
+        )}
       </div>
     </div>
   );
@@ -267,6 +282,7 @@ export default function Portfolio() {
     { category: "Backend Development", icon: Server, skills: ["REST APIs", "JWT Auth", "CRUD Operations", "Django ORM", "Middleware"] },
     { category: "Databases", icon: Database, skills: ["MySQL", "MySQL Workbench", "DataGrip", "Relational Schemas"] },
     { category: "Developer Tools", icon: Terminal, skills: ["Git", "GitHub", "Postman", "VS Code", "Requestly"] },
+    { category: "AI Tools", icon: Sparkles, skills: ["Claude", "GitHub Copilot", "Gemini CLI", "Antigravity"] },
   ];
 
   const projects = [
@@ -317,6 +333,16 @@ export default function Portfolio() {
         "Developed a Next.js application that queries Nvidia Nemotron, Gemma 3n 2B, and GPT-OSS-120B in parallel to analyze how AI answer engines mention a given product.",
         "Built a scoring engine that calculates a visibility score, compares competitor mentions, and generates actionable AEO recommendations rendered in a dynamic report card UI.",
         "Deployed on Vercel with a modular API route architecture; each AI engine has its own route, orchestrated by a single /api/diagnose endpoint for clean separation of concerns.",
+      ],
+    },
+    {
+      num: 6, title: "AI-First CRM — HCP Log",
+      liveUrl: "https://hcp-log.vercel.app",
+      tech: ["React", "Vite", "FastAPI", "OpenRouter", "MySQL"],
+      description: [
+        "Built a full-stack AI-first CRM prototype for logging healthcare professional (HCP) interactions, featuring a React + Vite frontend and a FastAPI backend.",
+        "Implemented a deterministic local field extractor with LLM fallback (OpenRouter) to parse free-text interaction notes into structured CRM fields.",
+        "Architected an async MySQL persistence layer (aiomysql) with automatic SQLite fallback for local dev, and deployed the full stack on Vercel with a clean `/api/v1` route separation between AI chat and interaction CRUD endpoints.",
       ],
     },
   ];
@@ -521,7 +547,7 @@ export default function Portfolio() {
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <SectionLabel>backend_projects</SectionLabel>
           <SectionTitle>Projects</SectionTitle>
-          
+
           {/* Backend Projects */}
           <div style={{ marginBottom: 60 }}>
             <p style={{ color: COLORS.textSecondary, fontSize: 15, marginBottom: 36, marginTop: 4 }}>Backend systems I've built using Django, REST APIs, and MySQL.</p>
