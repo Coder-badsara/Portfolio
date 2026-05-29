@@ -227,7 +227,7 @@ export default function Portfolio() {
     return () => clearInterval(iv);
   }, []);
 
-  const navLinks = ["Home", "About", "Skills", "Projects", "Education", "Certifications", "Contact"];
+  const navLinks = ["Home", "About", "Skills", "Experience", "Projects", "Education", "Certifications", "Contact"];
 
   const scrollTo = (id) => {
     document.getElementById(id.toLowerCase())?.scrollIntoView({ behavior: "smooth" });
@@ -537,6 +537,101 @@ export default function Portfolio() {
             </div>
             <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
               {["Problem-Solving", "Team Collaboration", "Adaptability", "Communication", "Eagerness to Learn"].map((s) => <Badge key={s} variant="muted">{s}</Badge>)}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* EXPERIENCE */}
+      <section id="experience" style={{ padding: "80px 5%", position: "relative", zIndex: 1 }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+          <SectionLabel>work_experience</SectionLabel>
+          <SectionTitle>Experience</SectionTitle>
+          <p style={{ color: COLORS.textSecondary, fontSize: 15, marginBottom: 36, marginTop: 4 }}>
+            My professional journey and key backend contributions.
+          </p>
+
+          <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+            <div
+              style={{
+                ...style.card,
+                padding: "32px 30px",
+                position: "relative",
+                overflow: "hidden",
+                transition: "all 0.3s ease",
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.borderColor = COLORS.accentBorder;
+                e.currentTarget.style.background = COLORS.bgCardHover;
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.borderColor = COLORS.border;
+                e.currentTarget.style.background = COLORS.bgCard;
+              }}
+            >
+              <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 4, background: COLORS.accent }} />
+
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 16, marginBottom: 20 }}>
+                <div>
+                  <h3 style={{ fontWeight: 700, fontSize: 22, color: COLORS.textPrimary, marginBottom: 4 }}>
+                    Payment Orchestration Layer
+                  </h3>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8, color: COLORS.accent, fontWeight: 600, fontSize: 15 }}>
+                    <Briefcase size={16} />
+                    <span>Backend Developer</span>
+                  </div>
+                </div>
+                <a
+                  href="https://drive.google.com/file/d/1HQ1uvWWZQORHCXAdd_LoVQDMpg162lzL/view?usp=sharing"
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 6,
+                    ...style.mono,
+                    fontSize: 12,
+                    ...style.accentBg,
+                    padding: "6px 14px",
+                    borderRadius: 8,
+                    cursor: "pointer",
+                    textDecoration: "none",
+                    transition: "all 0.2s ease-in-out",
+                  }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.background = COLORS.accent;
+                    e.currentTarget.style.color = "#070b09";
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.background = COLORS.accentGlow;
+                    e.currentTarget.style.color = COLORS.accent;
+                  }}
+                >
+                  <Award size={14} /> View Certificate
+                </a>
+              </div>
+
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 20 }}>
+                {["Razorpay", "Stripe", "PayU", "UPI", "Intelligent Routing", "State Machine", "Circuit Breakers", "Idempotency", "Webhook Processing"].map((tech) => (
+                  <Badge key={tech} variant="skill">{tech}</Badge>
+                ))}
+              </div>
+
+              <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                {[
+                  "Developed a production-grade payment orchestration system capable of routing transactions across multiple payment gateways (Razorpay, Stripe, PayU, and UPI).",
+                  "Implemented intelligent gateway selection based on performance metrics, success rates, latency, cost, and health status.",
+                  "Designed a robust transaction state machine with complete audit trails, idempotency handling, webhook processing, and automated reconciliation mechanisms.",
+                  "Built fault-tolerant failover strategies and circuit breaker patterns to ensure high availability and transaction reliability."
+                ].map((bullet, idx) => (
+                  <div key={idx} style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+                    <span style={{ color: COLORS.accent, ...style.mono, fontSize: 14, marginTop: 2 }}>→</span>
+                    <p style={{ color: COLORS.textSecondary, fontSize: 15, lineHeight: 1.7, margin: 0 }}>
+                      {bullet}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
