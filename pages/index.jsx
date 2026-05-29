@@ -210,7 +210,7 @@ export default function Portfolio() {
   const [isSending, setIsSending] = useState(false);
   const [submitStatus, setSubmitStatus] = useState({ type: "", message: "" });
   const typeTarget = "Backend Developer | Django Specialist";
-  const resumeUrl = "https://drive.google.com/uc?export=download&id=1KMa9SwEoi7AwDdtQLG5nmlScxdyvuy8j";
+  const resumeUrl = "https://drive.google.com/file/d/1XKCz_tWR7FVTZqjOH26112KKEmNOwyBY/view?usp=sharing";
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
@@ -574,7 +574,7 @@ export default function Portfolio() {
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 16, marginBottom: 20 }}>
                 <div>
                   <h3 style={{ fontWeight: 700, fontSize: 22, color: COLORS.textPrimary, marginBottom: 4 }}>
-                    Payment Orchestration Layer
+                    Zetheta Algorithms Private Limited
                   </h3>
                   <div style={{ display: "flex", alignItems: "center", gap: 8, color: COLORS.accent, fontWeight: 600, fontSize: 15 }}>
                     <Briefcase size={16} />
