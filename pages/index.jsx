@@ -375,22 +375,24 @@ export default function Portfolio() {
               >{l}</button>
             ))}
           </div>
-          <button
-            onClick={() => window.open("mailto:coderbadsara@gmail.com")}
-            className="nav-hire-desktop"
-            style={{ ...style.mono, background: COLORS.accentGlow, border: `1px solid ${COLORS.accentBorder}`, color: COLORS.accent, borderRadius: 8, padding: "8px 18px", fontSize: 13, cursor: "pointer", fontWeight: 600, transition: "all 0.2s" }}
-          >Hire Me</button>
-          <button
-            onClick={() => setNavOpen((prev) => !prev)}
-            className={navOpen ? "nav-menu-button nav-menu-button-open" : "nav-menu-button"}
-            aria-label="Toggle navigation menu"
-            aria-expanded={navOpen}
-            style={{ display: "none", alignItems: "center", justifyContent: "center", width: 42, height: 42, borderRadius: 10, background: "rgba(255,255,255,0.03)", border: `1px solid ${COLORS.border}`, color: COLORS.textPrimary, cursor: "pointer" }}
-          >
-            <span className={navOpen ? "nav-menu-icon nav-menu-icon-open" : "nav-menu-icon"}>
-              {navOpen ? <X size={18} /> : <Menu size={18} />}
-            </span>
-          </button>
+          <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
+            <button
+              onClick={() => window.open("mailto:coderbadsara@gmail.com")}
+              className="nav-hire-desktop"
+              style={{ ...style.mono, background: COLORS.accentGlow, border: `1px solid ${COLORS.accentBorder}`, color: COLORS.accent, borderRadius: 8, padding: "8px 18px", fontSize: 13, cursor: "pointer", fontWeight: 600, transition: "all 0.2s", height: 42 }}
+            >Hire Me</button>
+            <button
+              onClick={() => setNavOpen((prev) => !prev)}
+              className={navOpen ? "nav-menu-button nav-menu-button-open" : "nav-menu-button"}
+              aria-label="Toggle navigation menu"
+              aria-expanded={navOpen}
+              style={{ display: "none", alignItems: "center", justifyContent: "center", width: 42, height: 42, borderRadius: 10, background: "rgba(255,255,255,0.03)", border: `1px solid ${COLORS.border}`, color: COLORS.textPrimary, cursor: "pointer" }}
+            >
+              <span className={navOpen ? "nav-menu-icon nav-menu-icon-open" : "nav-menu-icon"}>
+                {navOpen ? <X size={18} /> : <Menu size={18} />}
+              </span>
+            </button>
+          </div>
           {navOpen && (
             <div className="nav-mobile-panel" style={{ position: "absolute", top: 64, right: 0, width: 240, padding: 12, borderRadius: 14, background: "rgba(7,11,9,0.98)", border: `1px solid ${COLORS.borderAccent}`, boxShadow: "0 18px 50px rgba(0,0,0,0.35)", display: "flex", flexDirection: "column", gap: 8 }}>
               {navLinks.map((l) => (
@@ -402,12 +404,6 @@ export default function Portfolio() {
                   {l}
                 </button>
               ))}
-              <button
-                onClick={() => window.open("mailto:coderbadsara@gmail.com")}
-                style={{ ...style.mono, marginTop: 4, background: COLORS.accentGlow, border: `1px solid ${COLORS.accentBorder}`, color: COLORS.accent, borderRadius: 10, padding: "10px 12px", fontSize: 13, cursor: "pointer", fontWeight: 600, textAlign: "left" }}
-              >
-                Hire Me
-              </button>
             </div>
           )}
         </div>

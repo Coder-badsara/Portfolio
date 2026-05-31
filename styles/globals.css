@@ -1,7 +1,31 @@
-@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+}
+
 @keyframes menuGlow {
-  0%, 100% {
+
+  0%,
+  100% {
     box-shadow: 0 0 0 0 rgba(0, 232, 122, 0.0), 0 0 0 1px rgba(0, 232, 122, 0.08);
     transform: translateY(0);
   }
@@ -13,9 +37,17 @@
 }
 
 @keyframes menuIconFlip {
-  0% { transform: rotate(0deg) scale(1); }
-  50% { transform: rotate(12deg) scale(1.05); }
-  100% { transform: rotate(0deg) scale(1); }
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+
+  50% {
+    transform: rotate(12deg) scale(1.05);
+  }
+
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
 }
 
 * {
@@ -48,19 +80,13 @@ section p {
   margin: 0;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .nav-desktop {
-    display: none;
-  }
-
-  .nav-hire-desktop {
-    display: none;
+    display: none !important;
   }
 
   .nav-menu-button {
     display: inline-flex !important;
-    animation: menuGlow 3.6s ease-in-out infinite;
-    transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease, transform 0.2s ease;
   }
 
   .nav-menu-button:hover {
@@ -91,7 +117,14 @@ section p {
   }
 }
 
+@media (min-width: 1025px) {
+  .nav-mobile-panel {
+    display: none !important;
+  }
+}
+
 @media (max-width: 768px) {
+
   .about-grid,
   .contact-grid,
   .projects-grid {
@@ -109,7 +142,7 @@ section p {
     justify-content: center;
   }
 
-  .hero-stats > div {
+  .hero-stats>div {
     flex: 1 1 calc(50% - 8px);
     min-width: calc(50% - 8px);
   }
@@ -142,7 +175,7 @@ section p {
     font-size: 26px !important;
   }
 
-  .hero-stats > div {
+  .hero-stats>div {
     flex-basis: 100%;
     min-width: 100%;
   }
@@ -154,6 +187,7 @@ section p {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .nav-menu-button,
   .nav-menu-icon-open,
   .hero-badge-wrap span span {
