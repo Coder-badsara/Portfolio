@@ -551,7 +551,7 @@ export default function Portfolio() {
             <div
               style={{
                 ...style.card,
-                padding: "32px 30px",
+                padding: "36px 32px",
                 position: "relative",
                 overflow: "hidden",
                 transition: "all 0.3s ease",
@@ -565,68 +565,196 @@ export default function Portfolio() {
                 e.currentTarget.style.background = COLORS.bgCard;
               }}
             >
+              {/* Green left accent border strip */}
               <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 4, background: COLORS.accent }} />
 
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 16, marginBottom: 20 }}>
+              {/* Company Header */}
+              <div style={{ marginBottom: 28, display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 16 }}>
                 <div>
-                  <h3 style={{ fontWeight: 700, fontSize: 22, color: COLORS.textPrimary, marginBottom: 4 }}>
+                  <h3 style={{ fontWeight: 700, fontSize: 24, color: COLORS.textPrimary, marginBottom: 6 }}>
                     Zetheta Algorithms Private Limited
                   </h3>
-                  <div style={{ display: "flex", alignItems: "center", gap: 8, color: COLORS.accent, fontWeight: 600, fontSize: 15 }}>
-                    <Briefcase size={16} />
-                    <span>Backend Developer</span>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8, color: COLORS.textSecondary, fontSize: 14 }}>
+                    <Briefcase size={16} color={COLORS.accent} />
+                    <span>Software Engineering Intern</span>
                   </div>
                 </div>
-                <a
-                  href="https://drive.google.com/file/d/1HQ1uvWWZQORHCXAdd_LoVQDMpg162lzL/view?usp=sharing"
-                  target="_blank"
-                  rel="noreferrer"
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: 6,
-                    ...style.mono,
-                    fontSize: 12,
-                    ...style.accentBg,
-                    padding: "6px 14px",
-                    borderRadius: 8,
-                    cursor: "pointer",
-                    textDecoration: "none",
-                    transition: "all 0.2s ease-in-out",
-                  }}
-                  onMouseEnter={e => {
-                    e.currentTarget.style.background = COLORS.accent;
-                    e.currentTarget.style.color = "#070b09";
-                  }}
-                  onMouseLeave={e => {
-                    e.currentTarget.style.background = COLORS.accentGlow;
-                    e.currentTarget.style.color = COLORS.accent;
-                  }}
-                >
-                  <Award size={14} /> View Certificate
-                </a>
+                <span style={{ ...style.mono, fontSize: 13, ...style.accentBg, padding: "4px 12px", borderRadius: 6 }}>
+                  1 May 2026 – 31 May 2026
+                </span>
               </div>
 
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 20 }}>
-                {["Razorpay", "Stripe", "PayU", "UPI", "Intelligent Routing", "State Machine", "Circuit Breakers", "Idempotency", "Webhook Processing"].map((tech) => (
-                  <Badge key={tech} variant="skill">{tech}</Badge>
-                ))}
-              </div>
-
-              <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-                {[
-                  "Developed a production-grade payment orchestration system capable of routing transactions across multiple payment gateways (Razorpay, Stripe, PayU, and UPI).",
-                  "Implemented intelligent gateway selection based on performance metrics, success rates, latency, cost, and health status.",
-                  "Designed a robust transaction state machine with complete audit trails, idempotency handling, webhook processing, and automated reconciliation mechanisms.",
-                  "Built fault-tolerant failover strategies and circuit breaker patterns to ensure high availability and transaction reliability."
-                ].map((bullet, idx) => (
-                  <div key={idx} style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
-                    <span style={{ color: COLORS.accent, ...style.mono, fontSize: 14, marginTop: 2 }}>→</span>
-                    <p style={{ color: COLORS.textSecondary, fontSize: 15, lineHeight: 1.7, margin: 0 }}>
-                      {bullet}
-                    </p>
+              {/* Nested projects timeline */}
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                
+                {/* Project 1 */}
+                <div style={{ display: "flex", gap: 16 }}>
+                  <div style={{ display: "flex", flexDirection: "column", alignItems: "center", flexShrink: 0 }}>
+                    {/* Glowing neon dot */}
+                    <div style={{
+                      width: 10,
+                      height: 10,
+                      borderRadius: "50%",
+                      background: COLORS.accent,
+                      boxShadow: `0 0 10px ${COLORS.accent}, 0 0 20px ${COLORS.accentBorder}`,
+                      marginTop: 7,
+                      zIndex: 2,
+                      border: `2px solid ${COLORS.bgCard}`
+                    }} />
+                    {/* Vertical line connecting to Project 2 */}
+                    <div style={{ 
+                      width: 2, 
+                      flex: 1, 
+                      background: `linear-gradient(to bottom, ${COLORS.accent}, ${COLORS.accentBorder})`,
+                      boxShadow: `0 0 8px ${COLORS.accentBorder}`,
+                      marginTop: 6
+                    }} />
                   </div>
-                ))}
+                  
+                  <div style={{ paddingBottom: 36, flex: 1 }}>
+                    {/* Project 1 Header */}
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 12, marginBottom: 12 }}>
+                      <div>
+                        <h4 style={{ fontWeight: 700, fontSize: 18, color: COLORS.textPrimary, marginBottom: 2 }}>
+                          Back End Developer
+                        </h4>
+                      </div>
+                      <a
+                        href="https://drive.google.com/file/d/1Jd8q25LhAhte_rujVSjpLb_1odge5PKU/view?usp=sharing"
+                        target="_blank"
+                        rel="noreferrer"
+                        style={{
+                          display: "inline-flex",
+                          alignItems: "center",
+                          gap: 6,
+                          ...style.mono,
+                          fontSize: 12,
+                          ...style.accentBg,
+                          padding: "6px 14px",
+                          borderRadius: 8,
+                          cursor: "pointer",
+                          textDecoration: "none",
+                          transition: "all 0.2s ease-in-out",
+                        }}
+                        onMouseEnter={e => {
+                          e.currentTarget.style.background = COLORS.accent;
+                          e.currentTarget.style.color = "#070b09";
+                        }}
+                        onMouseLeave={e => {
+                          e.currentTarget.style.background = COLORS.accentGlow;
+                          e.currentTarget.style.color = COLORS.accent;
+                        }}
+                      >
+                        <Award size={14} /> View Certificate
+                      </a>
+                    </div>
+
+                    {/* Tags */}
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 14 }}>
+                      {["Fastify", "Apache Kafka", "RabbitMQ", "Redis", "PostgreSQL", "Prisma", "Circuit Breakers", "Multi-Channel Dispatch"].map((tech) => (
+                        <Badge key={tech} variant="skill">{tech}</Badge>
+                      ))}
+                    </div>
+
+                    {/* Description bullets */}
+                    <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                      {[
+                        "Built a production-grade, event-driven notification engine for a fintech platform capable of handling 2M+ notifications per day with sub-second delivery latency for critical alerts.",
+                        "Designed a multi-stage pipeline using Apache Kafka for high-volume ingestion and RabbitMQ priority queues for reliable dispatch across SMS, Email, Push, WhatsApp, and In-App channels.",
+                        "Implemented a regulatory compliance engine enforcing TRAI DND scrubbing, Redis-based sliding-window frequency capping, and timezone-aware quiet-hours scheduling.",
+                        "Built custom stateful circuit breakers with automatic provider failover (MSG91 → Twilio, WhatsApp Cloud API) and end-to-end correlation tracking via Prometheus metrics and Pino logging."
+                      ].map((bullet, idx) => (
+                        <div key={idx} style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+                          <span style={{ color: COLORS.accent, ...style.mono, fontSize: 14, marginTop: 2 }}>→</span>
+                          <p style={{ color: COLORS.textSecondary, fontSize: 15, lineHeight: 1.7, margin: 0 }}>
+                            {bullet}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Project 2 */}
+                <div style={{ display: "flex", gap: 16 }}>
+                  <div style={{ display: "flex", flexDirection: "column", alignItems: "center", flexShrink: 0 }}>
+                    {/* Glowing neon dot */}
+                    <div style={{
+                      width: 10,
+                      height: 10,
+                      borderRadius: "50%",
+                      background: COLORS.accent,
+                      boxShadow: `0 0 10px ${COLORS.accent}, 0 0 20px ${COLORS.accentBorder}`,
+                      marginTop: 7,
+                      zIndex: 2,
+                      border: `2px solid ${COLORS.bgCard}`
+                    }} />
+                  </div>
+                  
+                  <div style={{ flex: 1 }}>
+                    {/* Project 2 Header */}
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 12, marginBottom: 12 }}>
+                      <div>
+                        <h4 style={{ fontWeight: 700, fontSize: 18, color: COLORS.textPrimary, marginBottom: 2 }}>
+                          Backend Developer
+                        </h4>
+                      </div>
+                      <a
+                        href="https://drive.google.com/file/d/1HQ1uvWWZQORHCXAdd_LoVQDMpg162lzL/view?usp=sharing"
+                        target="_blank"
+                        rel="noreferrer"
+                        style={{
+                          display: "inline-flex",
+                          alignItems: "center",
+                          gap: 6,
+                          ...style.mono,
+                          fontSize: 12,
+                          ...style.accentBg,
+                          padding: "6px 14px",
+                          borderRadius: 8,
+                          cursor: "pointer",
+                          textDecoration: "none",
+                          transition: "all 0.2s ease-in-out",
+                        }}
+                        onMouseEnter={e => {
+                          e.currentTarget.style.background = COLORS.accent;
+                          e.currentTarget.style.color = "#070b09";
+                        }}
+                        onMouseLeave={e => {
+                          e.currentTarget.style.background = COLORS.accentGlow;
+                          e.currentTarget.style.color = COLORS.accent;
+                        }}
+                      >
+                        <Award size={14} /> View Certificate
+                      </a>
+                    </div>
+
+                    {/* Tags */}
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 14 }}>
+                      {["Razorpay", "Stripe", "PayU", "UPI", "Intelligent Routing", "State Machine", "Circuit Breakers", "Idempotency", "Webhook Processing"].map((tech) => (
+                        <Badge key={tech} variant="skill">{tech}</Badge>
+                      ))}
+                    </div>
+
+                    {/* Description bullets */}
+                    <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                      {[
+                        "Developed a production-grade payment orchestration system capable of routing transactions across multiple payment gateways (Razorpay, Stripe, PayU, and UPI).",
+                        "Implemented intelligent gateway selection based on performance metrics, success rates, latency, cost, and health status.",
+                        "Designed a robust transaction state machine with complete audit trails, idempotency handling, webhook processing, and automated reconciliation mechanisms.",
+                        "Built fault-tolerant failover strategies and circuit breaker patterns to ensure high availability and transaction reliability."
+                      ].map((bullet, idx) => (
+                        <div key={idx} style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+                          <span style={{ color: COLORS.accent, ...style.mono, fontSize: 14, marginTop: 2 }}>→</span>
+                          <p style={{ color: COLORS.textSecondary, fontSize: 15, lineHeight: 1.7, margin: 0 }}>
+                            {bullet}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
               </div>
             </div>
           </div>
