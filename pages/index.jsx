@@ -210,7 +210,7 @@ export default function Portfolio() {
   const [isSending, setIsSending] = useState(false);
   const [submitStatus, setSubmitStatus] = useState({ type: "", message: "" });
   const typeTarget = "Backend Developer | Django Specialist";
-  const resumeUrl = "https://drive.google.com/file/d/1XKCz_tWR7FVTZqjOH26112KKEmNOwyBY/view?usp=sharing";
+  const resumeUrl = "https://drive.google.com/file/d/1LhUMO0qCkmrP-TclYQBr5wYLQTwBijN7/view?usp=sharing";
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
@@ -548,6 +548,96 @@ export default function Portfolio() {
           </p>
 
           <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+            {/* ArtSpot Technology Experience */}
+            <div
+              style={{
+                ...style.card,
+                padding: "36px 32px",
+                position: "relative",
+                overflow: "hidden",
+                transition: "all 0.3s ease",
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.borderColor = COLORS.accentBorder;
+                e.currentTarget.style.background = COLORS.bgCardHover;
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.borderColor = COLORS.border;
+                e.currentTarget.style.background = COLORS.bgCard;
+              }}
+            >
+              {/* Green left accent border strip */}
+              <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 4, background: COLORS.accent }} />
+
+              {/* Company Header */}
+              <div style={{ marginBottom: 28, display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 16 }}>
+                <div>
+                  <h3 style={{ fontWeight: 700, fontSize: 24, color: COLORS.textPrimary, marginBottom: 6 }}>
+                    ArtSpot Technology
+                  </h3>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8, color: COLORS.textSecondary, fontSize: 14 }}>
+                    <Briefcase size={16} color={COLORS.accent} />
+                    <span>Software Engineering Intern</span>
+                  </div>
+                </div>
+                <span style={{ ...style.mono, fontSize: 13, ...style.accentBg, padding: "4px 12px", borderRadius: 6 }}>
+                  3 June 2026 – Present
+                </span>
+              </div>
+
+              {/* Single Project Timeline */}
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                <div style={{ display: "flex", gap: 16 }}>
+                  <div style={{ display: "flex", flexDirection: "column", alignItems: "center", flexShrink: 0 }}>
+                    {/* Glowing neon dot */}
+                    <div style={{
+                      width: 10,
+                      height: 10,
+                      borderRadius: "50%",
+                      background: COLORS.accent,
+                      boxShadow: `0 0 10px ${COLORS.accent}, 0 0 20px ${COLORS.accentBorder}`,
+                      marginTop: 7,
+                      zIndex: 2,
+                      border: `2px solid ${COLORS.bgCard}`
+                    }} />
+                  </div>
+                  
+                  <div style={{ flex: 1 }}>
+                    {/* Project Header */}
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 12, marginBottom: 12 }}>
+                      <div>
+                        <h4 style={{ fontWeight: 700, fontSize: 18, color: COLORS.textPrimary, marginBottom: 2 }}>
+                          Backend Developer
+                        </h4>
+                      </div>
+                    </div>
+
+                    {/* Tags */}
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 14 }}>
+                      {["Django", "GraphQL", "Graphene", "Python", "Ratings & Reviews"].map((tech) => (
+                        <Badge key={tech} variant="skill">{tech}</Badge>
+                      ))}
+                    </div>
+
+                    {/* Description bullets */}
+                    <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                      {[
+                        "Migrated legacy DjangoObjectType definitions to GrapheneObjectType, modernizing the GraphQL schema layer and improving type consistency across the API.",
+                        "Designed and implemented a Ratings & Reviews system for both products and shops, including backend models, GraphQL mutations/queries, and business logic for aggregation."
+                      ].map((bullet, idx) => (
+                        <div key={idx} style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+                          <span style={{ color: COLORS.accent, ...style.mono, fontSize: 14, marginTop: 2 }}>→</span>
+                          <p style={{ color: COLORS.textSecondary, fontSize: 15, lineHeight: 1.7, margin: 0 }}>
+                            {bullet}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <div
               style={{
                 ...style.card,
@@ -616,7 +706,7 @@ export default function Portfolio() {
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 12, marginBottom: 12 }}>
                       <div>
                         <h4 style={{ fontWeight: 700, fontSize: 18, color: COLORS.textPrimary, marginBottom: 2 }}>
-                          Back End Developer
+                          Backend Developer
                         </h4>
                       </div>
                       <a
