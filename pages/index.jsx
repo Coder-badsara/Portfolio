@@ -211,6 +211,7 @@ export default function Portfolio() {
   const [submitStatus, setSubmitStatus] = useState({ type: "", message: "" });
   const typeTarget = "Backend Developer | Django Specialist";
   const resumeUrl = "https://drive.google.com/file/d/1LhUMO0qCkmrP-TclYQBr5wYLQTwBijN7/view?usp=sharing";
+  const currentYear = new Date().getFullYear();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
@@ -279,9 +280,9 @@ export default function Portfolio() {
 
   const skills = [
     { category: "Languages & Frameworks", icon: Code2, skills: ["Python", "Django", "C++", "HTML", "Bootstrap"] },
-    { category: "Backend Development", icon: Server, skills: ["REST APIs", "JWT Auth", "CRUD Operations", "Django ORM", "Middleware"] },
-    { category: "Databases", icon: Database, skills: ["MySQL", "MySQL Workbench", "DataGrip", "Relational Schemas"] },
-    { category: "Developer Tools", icon: Terminal, skills: ["Git", "GitHub", "Postman", "VS Code", "Requestly"] },
+    { category: "Backend Development", icon: Server, skills: ["REST APIs", "GraphQL", "JWT Auth", "CRUD Operations", "Django ORM", "Middleware"] },
+    { category: "Databases", icon: Database, skills: ["MySQL", "PostgreSQL"] },
+    { category: "Developer Tools", icon: Terminal, skills: ["Git", "GitHub", "Postman", "VS Code", "Requestly", "MySQL Workbench", "DataGrip"] },
     { category: "AI Tools", icon: Sparkles, skills: ["Claude", "GitHub Copilot", "Gemini CLI", "Antigravity"] },
   ];
 
@@ -452,7 +453,7 @@ export default function Portfolio() {
 
           {/* Stat cards */}
           <div className="hero-stats" style={{ display: "flex", gap: 16, marginTop: 56, flexWrap: "wrap" }}>
-            {[["3+", "Backend Projects"], ["Django", "Primary Framework"], ["MySQL", "Database Stack"], ["REST APIs", "Core Skill"]].map(([num, label]) => (
+            {[['5+', "Backend Projects"], ["Django", "Primary Framework"], ["MySQL", "Database Stack"], ["REST APIs", "Core Skill"]].map(([num, label]) => (
               <div key={label} style={{ ...style.card, padding: "14px 20px", textAlign: "center", minWidth: 110 }}>
                 <div style={{ ...style.mono, fontSize: 18, fontWeight: 700, color: COLORS.accent }}>{num}</div>
                 <div style={{ fontSize: 12, color: COLORS.textMuted, marginTop: 2 }}>{label}</div>
@@ -614,7 +615,7 @@ export default function Portfolio() {
 
                     {/* Tags */}
                     <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 14 }}>
-                      {["Django", "GraphQL", "Graphene", "Python", "Ratings & Reviews"].map((tech) => (
+                      {["Django", "GraphQL", "Graphene", "Python"].map((tech) => (
                         <Badge key={tech} variant="skill">{tech}</Badge>
                       ))}
                     </div>
@@ -623,7 +624,8 @@ export default function Portfolio() {
                     <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                       {[
                         "Migrated legacy DjangoObjectType definitions to GrapheneObjectType, modernizing the GraphQL schema layer and improving type consistency across the API.",
-                        "Designed and implemented a Ratings & Reviews system for both products and shops, including backend models, GraphQL mutations/queries, and business logic for aggregation."
+                        "Designed and implemented a Ratings & Reviews system for both products and shops, including backend models, GraphQL mutations/queries, and business logic for aggregation.",
+                        "Built and integrated Cart and Guest Cart functionality, enabling seamless order flow for both authenticated and unauthenticated users through dedicated backend models, GraphQL mutations/queries, and session-based cart persistence."
                       ].map((bullet, idx) => (
                         <div key={idx} style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
                           <span style={{ color: COLORS.accent, ...style.mono, fontSize: 14, marginTop: 2 }}>→</span>
@@ -1096,7 +1098,7 @@ export default function Portfolio() {
       {/* FOOTER */}
       <footer className="portfolio-footer" style={{ padding: "28px 5%", borderTop: `1px solid ${COLORS.border}`, display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12, position: "relative", zIndex: 1 }}>
         <span style={{ ...style.mono, color: COLORS.textMuted, fontSize: 13 }}>Built by <span style={{ color: COLORS.accent }}>Umesh Badsara</span> — Backend Developer</span>
-        <span style={{ color: COLORS.textMuted, fontSize: 13 }}>© 2025 Umesh Badsara. All rights reserved.</span>
+        <span style={{ color: COLORS.textMuted, fontSize: 13 }}>© {currentYear} Umesh Badsara. All rights reserved.</span>
         <div style={{ display: "flex", gap: 10 }}>
           <a href="https://github.com/Coder-badsara" target="_blank" rel="noreferrer" style={{ width: 34, height: 34, borderRadius: 8, background: "rgba(255,255,255,0.04)", border: `1px solid ${COLORS.border}`, display: "flex", alignItems: "center", justifyContent: "center", color: COLORS.textMuted }}>
             <Github size={15} />
